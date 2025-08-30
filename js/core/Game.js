@@ -5,11 +5,9 @@ Handles the DOM, load, init, update & render loops
 
 **************************************/
 
-(function(exports){
 
 // Singleton
 var Game = {};
-exports.Game = Game;
 
 // PROPERTIES
 Game.width = 960;
@@ -75,24 +73,26 @@ Game.animate = function(){
     requestAnimationFrame(Game.animate);
 };
 
+
 // GAME PAUSED?
 // ON BLUR & PAUSE
-
-var modal_shade = document.getElementById("modal_shade");
-var paused = document.getElementById("paused");
-window.onblur = function(){
-	if(Game.scene && Game.scene.UNPAUSEABLE) return;
-	modal_shade.style.display = "block";
-	paused.style.display = "block";
-	Game.paused = true;
-	Howler.mute(true);
-}
-modal_shade.onclick = paused.onclick = function(){
-	modal_shade.style.display = "none";
-	paused.style.display = "none";
-	Game.paused = false;
-	Howler.mute(false);
-};
+window.addEventListener('DOMContentLoaded', function() {
+	var modal_shade = document.getElementById("modal_shade");
+	var paused = document.getElementById("paused");
+	window.onblur = function(){
+		if(Game.scene && Game.scene.UNPAUSEABLE) return;
+		modal_shade.style.display = "block";
+		paused.style.display = "block";
+		Game.paused = true;
+		Howler.mute(true);
+	}
+	modal_shade.onclick = paused.onclick = function(){
+		modal_shade.style.display = "none";
+		paused.style.display = "none";
+		Game.paused = false;
+		Howler.mute(false);
+	};
+});
 
 // LOADING, and ADDING TO MANIFEST.
 // TO DO: Progress, too
@@ -178,4 +178,4 @@ Game.addToManifest = function(keyValues, PRELOADER){
 	}
 };
 
-})(window);
+

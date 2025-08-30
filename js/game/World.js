@@ -1,6 +1,7 @@
 Game.addToManifest({
 	bg: "sprites/bg.png",
-	bg_dark: "sprites/bg_dark.png"
+	bg_dark: "sprites/bg_dark.png",
+	forest: "sprites/forest.gif"
 });
 
 /**************************************

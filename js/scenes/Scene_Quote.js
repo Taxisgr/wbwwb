@@ -46,7 +46,7 @@ function Scene_Quote(){
     var q3Sprite = MakeSprite("quote0003");
     q3.addChild(q3Sprite);
     
-    var q3Name = new PIXI.Text(textStrings["MarshallMcLuhan"], {font:"33px Cairo", fill:"#FFFFFF", align:"center"});
+    var q3Name = new PIXI.Text(textStrings["name"], {font:"33px Cairo", fill:"#FFFFFF", align:"center"});
     q3Name.anchor.x = 0.5;
     q3Name.anchor.y = 0.5;
     q3Name.x = Game.width / 2 + 4;
@@ -56,12 +56,7 @@ function Scene_Quote(){
     var q4Sprite = MakeSprite("quote0004");
     q4.addChild(q4Sprite);
     
-    var q4Text = new PIXI.Text(textStrings["misatrributed"] + "\n", {font:"33px Cairo", fill:"#FFFFFF", align:"center"});
-    q4Text.anchor.x = 0.5;
-    q4Text.anchor.y = 0.5;
-    q4Text.x = Game.width / 2 + 4;
-    q4Text.y = Game.height / 2 + 135;
-    q4.addChild(q4Text);
+    
     
 	// Add 'em in.
 	q2.alpha = q3.alpha = q4.alpha = 0;
@@ -96,7 +91,7 @@ function Scene_Quote(){
 			.call(function(){
 
 				Tween_get(text).to({alpha:0}, _s(BEAT), Ease.quadInOut).call(function(){
-					Game.sceneManager.gotoScene("Game");
+					Game.sceneManager.gotoScene("ForestBurn");
 				});
 
 			});

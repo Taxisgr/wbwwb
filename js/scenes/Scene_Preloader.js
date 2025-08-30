@@ -12,6 +12,7 @@ function Scene_Preloader(){
 	// Background!
 	Game.stage.addChild(MakeSprite("bg_preload"));
 
+
 	// RECURSIVE SCREEN
 	var renderTexturePoolIndex = 0;
 	var renderTexturePool = [
@@ -45,21 +46,6 @@ function Scene_Preloader(){
     text.y = bar.y;
     Game.stage.addChild(text);
     
-    // Playing time text
-    var playingTimeText = new PIXI.Text(textStrings["playingTime"] + "\n", { font: "32px Cairo", fill: "#FFFFFF", align: "center" }); // \n hack. needed when the text field cuts some of the string font's bottom
-    playingTimeText.anchor.x = 0.5;
-    playingTimeText.anchor.y = 0.5;
-    playingTimeText.x = bar.x;
-    playingTimeText.y = 345;
-    Game.stage.addChild(playingTimeText);
-    
-    // Warning text
-    var warningText = new PIXI.Text(textStrings["warning"], { font: "25px Cairo", fill: "#666666", align: "center" });
-    warningText.anchor.x = 0.5;
-    warningText.anchor.y = 0.5;
-    warningText.x = bar.x;
-    warningText.y = 422;
-    Game.stage.addChild(warningText);
     
     // CURSOR
     var cursor = new Cursor(self);
