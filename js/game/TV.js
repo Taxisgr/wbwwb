@@ -19,10 +19,12 @@ function TV(scene){
 
 	// Properties
 	self.scene = scene;
-	self.x = Game.width/2;
-	self.y = Game.height/2 + 80;
-	self.width = 150;
-	self.height = 180;
+	// Bottom right corner, with margin
+	var margin = 10;
+	self.width = 260; // larger
+	self.height = 280; // larger
+	self.x = Game.width - self.width/2 - margin;
+	self.y = Game.height - self.height/2 - margin/2;
 
 	// Graphics
 	var resources = PIXI.loader.resources;

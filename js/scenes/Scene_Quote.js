@@ -4,7 +4,7 @@ Game.addToManifest({
 	quote0003: "sprites/quote/quote0003.png",
 	quote0004: "sprites/quote/quote0004.png",
 
-	bg_park: "sounds/bg_park.mp3"
+	
 });
 
 function Scene_Quote(){
@@ -77,16 +77,7 @@ function Scene_Quote(){
 			Tween_get(q4)
 			.wait(_s(BEAT))
 			.to({alpha:1}, _s(BEAT), Ease.quadInOut)
-			.call(function(){
-				
-				// Background Ambience
-				var ambience = Game.sounds.bg_park;
-			   	ambience.loop(true);
-			   	ambience.volume(0);
-			   	ambience.play();
-			   	ambience.fade(0, 1, 2000);
-
-			})
+			
 			.wait(_s(BEAT*1.5))
 			.call(function(){
 

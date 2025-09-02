@@ -1,7 +1,9 @@
 Game.addToManifest({
 	bg: "sprites/bg.png",
 	bg_dark: "sprites/bg_dark.png",
-	forest: "sprites/forest.gif"
+	forest: "sprites/forest.gif",
+	ice: "sprites/ice.png",
+	ice_crack: "sprites/ice_crack.png"
 });
 
 /**************************************
@@ -31,14 +33,17 @@ function World(scene, options){
 	self.layers.bg = new PIXI.Container();
 	g.addChild(self.layers.bg);
 	var bg = MakeSprite(options.bg ? options.bg : "bg");
-	bg.position.x = -100;
-    bg.position.y = -100;
-    self.layers.bg.addChild(bg);
-    self.bg = [];
-    self.addBG = function(bg){
+	// Stretch background to fill the game area
+	bg.x = 0;
+	bg.y = 0;
+	bg.width = Game.width;
+	bg.height = Game.height;
+	self.layers.bg.addChild(bg);
+	self.bg = [];
+	self.addBG = function(bg){
 		self.bg.push(bg);
 		self.layers.bg.addChild(bg.graphics);
-    };
+	};
 
 	// LAYER: PROPS
 	self.layers.props = new PIXI.Container();

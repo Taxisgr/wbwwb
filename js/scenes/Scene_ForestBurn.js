@@ -1,13 +1,21 @@
 // Scene_ForestBurn.js
 // Πρώτο act: Δάσος που καίγεται
 
-
+Game.addToManifest({
+    bg_forest: "sounds/bg_forest.mp3"
+});
 
 function Scene_ForestBurn() {
     var self = this;
     Scene.call(self);
 
-    // Graphics container
+    // play bg_forest sound
+    var bg_forest = Game.sounds.bg_forest;
+    bg_forest.loop(true);
+    bg_forest.volume(1);
+    bg_forest.play();
+
+    // Graphics container (single instance)
     self.graphics = new PIXI.Container();
     Game.stage.addChild(self.graphics);
 
@@ -23,9 +31,9 @@ function Scene_ForestBurn() {
     var burning = true;
     // Fire pixel positions (3 σημεία στη βάση του δάσους)
     var firePixels = [
-        {x: Game.width * 0.15, y: Game.height - 105},
-        {x: Game.width * 0.35, y: Game.height - 85},
-        {x: Game.width * 0.51, y: Game.height - 115}
+        {x: Game.width * 0.15, y: Game.height - 107},
+        {x: Game.width * 0.35, y: Game.height - 87},
+        {x: Game.width * 0.51, y: Game.height - 117}
     ];
     // Δημιουργία fire sprites (gif)
     var fireSprites = [];
@@ -42,13 +50,10 @@ function Scene_ForestBurn() {
     titleText.y = 40;
     self.graphics.addChild(titleText);
 
-
-    // Camera & TV
-    self.graphics = new PIXI.Container();
-    Game.stage.addChild(self.graphics);
+    // Camera, TV, Director
     self.camera = new Camera(self);
     self.tv = new TV(self);
-    // Προσθήκη TV στο stage
+    self.director = new Director(self);
     self.graphics.addChild(self.tv.graphics);
 
     // Animation loop
@@ -93,15 +98,35 @@ function Scene_ForestBurn() {
         }
     }
 
+    // Director animation/callbacks: show photo on TV, then go to next scene
+    self.director.callbacks = {
+        takePhoto: function(d) {
+            // Show photo on TV
+            self.tv.placePhoto({
+                photo: d.photoTexture,
+                text: textStrings["wmwww_feed_caption_forest"]
+            });
+        },
+        movePhoto: function(d) {
+            d.audience_movePhoto();
+        },
+        cutToTV: function(d) {
+            d.audience_cutToTV();
+            // Μετάβαση στην επόμενη σκηνή
+            setTimeout(function() {
+                if (Game.sceneManager) {
+                    Game.sceneManager.gotoScene('IceMelt');
+                }
+                // stop bg_forest sound
+                Game.sounds.bg_forest.stop();
+            }, 1000);
+        }
+    };
+
 
     // Όταν τραβηχτεί φωτογραφία από την Camera
     self.camera.onPhoto = function(photoTexture) {
         burning = false;
-        // Εμφάνιση στην TV
-        self.tv.placePhoto({
-            photo: photoTexture,
-            text: textStrings["wmwww_feed_caption_forest"]
-        });
         // Προαιρετικά: Προσθήκη στο feed
         if (window.addToFeed) {
             window.addToFeed({
@@ -109,12 +134,8 @@ function Scene_ForestBurn() {
                 caption: textStrings["wmwww_feed_caption_forest"]
             });
         }
-        // Μετάβαση στην επόμενη σκηνή μετά από λίγο
-        setTimeout(function() {
-            if (Game.sceneManager) {
-                Game.sceneManager.gotoScene('IceMelt');
-            }
-        }, 2000);
+        // Ξεκινάει το director flow (photo->TV->επόμενο scene)
+        self.director.takePhoto(self.camera);
     };
 
     // Καθαρισμός

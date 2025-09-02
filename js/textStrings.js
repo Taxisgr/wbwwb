@@ -113,7 +113,7 @@ var textStrings = {
 	"toBeContinued": "(to be continued!)",
 
 	// (quote0002.png)
-	"WBWWB": "We destroy what whe touch.",
+	"WBWWB": "We destroy what we touch.",
 	"WSOTATOTSU": "Μια εργασία στο μάθημα της Τέχνης Διαδικτύου του: ",
 
 	// (quote0003.png)

@@ -318,49 +318,14 @@ function Director(scene){
 		// Hide Camera
 		scene.camera.hide();
 
-        // SOUND?
-		var data = self.photoData;
-		var fail = false;
-		var nothing = data.ITS_NOTHING;
-		if(!data.forceChyron){
-			if(data.audience==0 && !data.audienceCircles && !data.audienceSquares){
-
-	            Game.sounds.crickets.play();
-	            fail = true;
-
-	            // SHOW CRICKET
-	            var cricket = new Cricket(scene);
-		        cricket.watchTV();
-		        scene.world.addProp(cricket);
-
-		        // OR... MULTIPLE CRICKETS!
-		        if(data.CAUGHT_A_CRICKET){
-
-		        	var cricket = new Cricket(scene);
-			        cricket.watchTV();
-			        cricket.x += 30;
-			        cricket.hopAwayTimeout += 15;
-			        scene.world.addProp(cricket);
-
-			        var cricket = new Cricket(scene);
-			        cricket.watchTV();
-			        cricket.x += 60;
-			        cricket.hopAwayTimeout += 30;
-			        scene.world.addProp(cricket);
-
-		        }
-
-	        }
-	    }
+       
 
 		// Add photo texture to the TV
 		var text = self.chyron;
 		var tv = self.tv;
 		tv.placePhoto({
 			photo: self.photoTexture,
-			text: text,
-			fail: fail,
-			nothing: nothing
+			text: text
 		});
 
 		// Where to cut viewport to

@@ -48,8 +48,7 @@ function Stage_Evil(self, HACK){
 		})[0];
 		lovers.beStunned();
 
-        // GOODBYE PARK SOUND
-        Game.sounds.bg_park.stop();
+        
 
     };
 
