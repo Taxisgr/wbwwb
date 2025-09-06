@@ -15,44 +15,64 @@ Game.height = 540;
 Game.stats = true;
 
 // INIT
-Game.init = function(HACK){
 
-	// Set up PIXI
-	Game.renderer = new PIXI.WebGLRenderer(Game.width, Game.height);
-	document.querySelector("#stage").appendChild(Game.renderer.view);
-	Game.stage = new PIXI.Container();
-	Game.stage.interactive = true;
+window.addEventListener('DOMContentLoaded', function() {
+	var modal_shade = document.getElementById("modal_shade");
+	var paused = document.getElementById("paused");
+	modal_shade.style.display = "block";
+	paused.style.display = "block";
+	Game.paused = true;
+	Howler.mute(true);
 
-	// Mr Doob Stats
-	if(Game.stats){
-		Game.stats = new Stats();
-		Game.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-		document.body.appendChild(Game.stats.dom);
-	}
+	
+	modal_shade.onclick = paused.onclick = function(){
+		modal_shade.style.display = "none";
+		paused.style.display = "none";
+		Game.paused = false;
+		Howler.mute(false);
+		Game.init = function(HACK){
+		// Set up PIXI
+		Game.renderer = new PIXI.WebGLRenderer(Game.width, Game.height);
+		document.querySelector("#stage").appendChild(Game.renderer.view);
+		Game.stage = new PIXI.Container();
+		Game.stage.interactive = true;
 
-	// Scene Manager
-	Game.scene = null;
-	Game.sceneManager = new SceneManager();
+		// Mr Doob Stats
+		if(Game.stats){
+			Game.stats = new Stats();
+			Game.stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+			document.body.appendChild(Game.stats.dom);
+		}
 
-	if(HACK){
-		// NOT preloader - jump direct to a scene
-		Game.loadAssets(function(){ // well, also get preloader assets...
+		// Scene Manager
+		Game.scene = null;
+		Game.sceneManager = new SceneManager();
+
+		if(true){
+			// NOT preloader - jump direct to a scene
+			Game.loadAssets(function(){ // well, also get preloader assets...
+				Game.loadAssets(function(){
+					Game.sceneManager.gotoScene("Quote");
+					setInterval(Game.update,1000/60);
+					Game.animate();
+				}, function(){}, false);
+			}, function(){}, true);
+		}else{
+			// Preloader
 			Game.loadAssets(function(){
-				Game.sceneManager.gotoScene(HACK);
+				Game.sceneManager.gotoScene("Preloader");
 				setInterval(Game.update,1000/60);
 				Game.animate();
-			}, function(){}, false);
-		}, function(){}, true);
-	}else{
-		// Preloader
-		Game.loadAssets(function(){
-			Game.sceneManager.gotoScene("Preloader");
-			setInterval(Game.update,1000/60);
-			Game.animate();
-		}, function(){}, true);
-	}
+			}, function(){}, true);
+		}
+	};
+	Game.init();
+	};
 
-};
+	// Move Game.init inside the event listener
+	
+});
+
 
 // UPDATE & ANIMATE
 
@@ -76,23 +96,23 @@ Game.animate = function(){
 
 // GAME PAUSED?
 // ON BLUR & PAUSE
-window.addEventListener('DOMContentLoaded', function() {
-	var modal_shade = document.getElementById("modal_shade");
-	var paused = document.getElementById("paused");
-	window.onblur = function(){
-		if(Game.scene && Game.scene.UNPAUSEABLE) return;
-		modal_shade.style.display = "block";
-		paused.style.display = "block";
-		Game.paused = true;
-		Howler.mute(true);
-	}
-	modal_shade.onclick = paused.onclick = function(){
-		modal_shade.style.display = "none";
-		paused.style.display = "none";
-		Game.paused = false;
-		Howler.mute(false);
-	};
-});
+// window.addEventListener('DOMContentLoaded', function() {
+// 	var modal_shade = document.getElementById("modal_shade");
+// 	var paused = document.getElementById("paused");
+// 	window.onblur = function(){
+// 		if(Game.scene && Game.scene.UNPAUSEABLE) return;
+// 		modal_shade.style.display = "block";
+// 		paused.style.display = "block";
+// 		Game.paused = true;
+// 		Howler.mute(true);
+// 	}
+// 	modal_shade.onclick = paused.onclick = function(){
+// 		modal_shade.style.display = "none";
+// 		paused.style.display = "none";
+// 		Game.paused = false;
+// 		Howler.mute(false);
+// 	};
+// });
 
 // LOADING, and ADDING TO MANIFEST.
 // TO DO: Progress, too

@@ -20,23 +20,23 @@ function Scene_IceMelt() {
     self.graphics = new PIXI.Container();
     Game.stage.addChild(self.graphics);
 
-    // World (background: ice)
-    self.world = new World(self, {bg: "ice"}); // Θα χρειαστεί να προσθέσεις sprites/ice.png ή .gif
+    // background: ice
+    self.world = new World(self, {bg: "ice"}); 
 
-    // Layer για νερό/λιώσιμο πάνω από το background
+    // Layer 
     var meltOverlay = new PIXI.Graphics();
     self.graphics.addChild(meltOverlay);
 
     // Animation state
     var meltProgress = 0; // 0 (πάγος) -> 1 (νερό)
     var melting = true;
-    // Ice crack positions (ενδεικτικά σημεία)
+
     var crackPoints = [
         {x: Game.width * 0.25, y: Game.height * 0.35},
         {x: Game.width * 0.5, y: Game.height * 0.32},
         {x: Game.width * 0.75, y: Game.height * 0.37}
     ];
-    // Δημιουργία crack sprites (αν έχεις ice_crack.png)
+
     var crackSprites = [];
     for (var i = 0; i < crackPoints.length; i++) {
         var sprite = new PIXI.Sprite(PIXI.Texture.fromImage('sprites/ice_crack.png'));
@@ -45,7 +45,7 @@ function Scene_IceMelt() {
         crackSprites.push(sprite);
     }
 
-    // Κείμενο τίτλου
+    // Κείμενο
     var titleText = new PIXI.Text(textStrings["wmwww_ice_melts"], {font: "36px Cairo", fill: "#fff", align: "center"});
     titleText.x = Game.width/2 - titleText.width/2;
     titleText.y = 40;
@@ -68,11 +68,11 @@ function Scene_IceMelt() {
 
     function drawMeltOverlay(progress) {
         meltOverlay.clear();
-        // Εφέ νερού/λιώσιμου
+        // Εφέ νερού
         meltOverlay.beginFill(0x66ccff, 0.12 * progress);
         meltOverlay.drawRect(0, Game.height - 180, Game.width, 180 * progress);
         meltOverlay.endFill();
-        // Cracks (αν έχεις crack sprites)
+
         var t = performance.now() / 1000;
         for (var i = 0; i < crackPoints.length; i++) {
             var px = crackPoints[i];
@@ -80,7 +80,7 @@ function Scene_IceMelt() {
             // Jitter
             var jitterX = (Math.random() - 0.5) * 8;
             var jitterY = (Math.random() - 0.5) * 8;
-            // "Αναπνοή"
+            // Breathing + pulsating effect
             var baseRadius = 180 + 180 * progress;
             var pulse = Math.sin(t * 1.5 + i) * 16 * (1 - 0.5 * progress); // πιο αργό, πιο ομαλό
             var radius = baseRadius + pulse;
@@ -109,7 +109,7 @@ function Scene_IceMelt() {
             d.audience_cutToTV();
             setTimeout(function() {
                 if (Game.sceneManager) {
-                    Game.sceneManager.gotoScene('Flood'); // επόμενο act
+                    Game.sceneManager.gotoScene('Flood'); 
                 }
                 Game.sounds.ice_sound.stop();
             }, 1000);
@@ -128,7 +128,7 @@ function Scene_IceMelt() {
         self.director.takePhoto(self.camera);
     };
 
-    // Καθαρισμός
+   
     self.kill = function() {
         Game.stage.removeChildren();
     };

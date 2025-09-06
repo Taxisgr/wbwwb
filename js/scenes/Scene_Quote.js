@@ -3,6 +3,7 @@ Game.addToManifest({
 	quote0002: "sprites/quote/quote0002.png",
 	quote0003: "sprites/quote/quote0003.png",
 	quote0004: "sprites/quote/quote0004.png",
+	background_music: "sounds/background_music.mp3"
 
 	
 });
@@ -12,7 +13,13 @@ function Scene_Quote(){
 	var self = this;
 	Scene.call(self);
 
-	// Layers, yo.
+	// play background music
+	var bgMusic = Game.sounds.background_music;
+	bgMusic.loop(false);
+	bgMusic.volume(0.2);
+	bgMusic.play();
+
+	// Layers
 	var q1 = MakeSprite("blackout");
 	var q2 = new PIXI.Container();
 	var q3 = new PIXI.Container();
@@ -58,7 +65,7 @@ function Scene_Quote(){
     
     
     
-	// Add 'em in.
+	// Show.
 	q2.alpha = q3.alpha = q4.alpha = 0;
 	Game.stage.addChild(q1);
 	var text = new PIXI.Container();
@@ -67,7 +74,7 @@ function Scene_Quote(){
 	text.addChild(q3);
 	text.addChild(q4);
 
-	// TWEEN ANIM
+	// Animation timing
 	Tween_get(q2)
 	.wait(_s(BEAT*1.5))
 	.to({alpha:1}, _s(BEAT), Ease.quadInOut).call(function(){

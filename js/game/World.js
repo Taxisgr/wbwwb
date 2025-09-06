@@ -3,7 +3,15 @@ Game.addToManifest({
 	bg_dark: "sprites/bg_dark.png",
 	forest: "sprites/forest.gif",
 	ice: "sprites/ice.png",
-	ice_crack: "sprites/ice_crack.png"
+	ice_crack: "sprites/ice_crack.png",
+	flood: "sprites/flood.png",
+	flood_wave: "sprites/flood_wave.png",
+	quake: "sprites/quake.png",
+	quake_crack: "sprites/quake_crack.png",
+	quake_smoke: "sprites/brown_smoke.png",
+	plastic_ocean: "sprites/plastic_ocean.png",
+	plastic_bottle: "sprites/plastic_bottle.png",
+	earth_destoyed: "sprites/earth_destroyed.png"
 });
 
 /**************************************

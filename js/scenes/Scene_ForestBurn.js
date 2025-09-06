@@ -19,7 +19,7 @@ function Scene_ForestBurn() {
     self.graphics = new PIXI.Container();
     Game.stage.addChild(self.graphics);
 
-    // World (για background και resource loading)
+    //  background 
     self.world = new World(self, {bg: "forest"});
 
     // Layer για φωτιά/καπνό πάνω από το background
@@ -29,13 +29,13 @@ function Scene_ForestBurn() {
     // Animation state
     var burnProgress = 0; // 0 (καθαρό) -> 1 (καμένο)
     var burning = true;
-    // Fire pixel positions (3 σημεία στη βάση του δάσους)
+   
     var firePixels = [
         {x: Game.width * 0.15, y: Game.height - 107},
         {x: Game.width * 0.35, y: Game.height - 87},
         {x: Game.width * 0.51, y: Game.height - 117}
     ];
-    // Δημιουργία fire sprites (gif)
+ 
     var fireSprites = [];
     for (var i = 0; i < firePixels.length; i++) {
         var sprite = new PIXI.Sprite(PIXI.Texture.fromImage('sprites/fire_pixel.gif'));
@@ -44,7 +44,7 @@ function Scene_ForestBurn() {
         fireSprites.push(sprite);
     }
 
-    // Κείμενο τίτλου
+    // Κείμενο
     var titleText = new PIXI.Text(textStrings["wmwww_forest_burns"], {font: "36px Cairo", fill: "#fff", align: "center"});
     titleText.x = Game.width/2 - titleText.width/2;
     titleText.y = 40;
@@ -127,18 +127,18 @@ function Scene_ForestBurn() {
     // Όταν τραβηχτεί φωτογραφία από την Camera
     self.camera.onPhoto = function(photoTexture) {
         burning = false;
-        // Προαιρετικά: Προσθήκη στο feed
+        
         if (window.addToFeed) {
             window.addToFeed({
                 image: 'forest_burn',
                 caption: textStrings["wmwww_feed_caption_forest"]
             });
         }
-        // Ξεκινάει το director flow (photo->TV->επόμενο scene)
+      
         self.director.takePhoto(self.camera);
     };
 
-    // Καθαρισμός
+    
     self.kill = function() {
         Game.stage.removeChildren();
     };

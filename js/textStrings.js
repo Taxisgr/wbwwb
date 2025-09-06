@@ -1,5 +1,4 @@
-// ...existing code...
-// Set default language (English)
+
 
 
 
@@ -12,105 +11,49 @@ var textStrings = {
 	"wmwww_title": "We Melt What We Watch",
 	"wmwww_forest_burns": "Το δάσος καίγεται...",
 	"wmwww_ice_melts": "Ο πάγος λιώνει...",
+	"wmwww_feed_caption_quake": "Σείσμος εννέα ρίχτερ...",
 	"wmwww_ocean_plastic": "Πλαστικά γεμίζουν τον ωκεανό...",
-	"wmwww_city_flood": "Η πόλη πλημμυρίζει...",
+	"wmwww_flood": "Η πόλη πλημμυρίζει...",
+	"wmwww_plastic_ocean": "Πλαστικά γεμίζουν τον ωκεανό...",
 	"wmwww_final_chaos": "Καταστροφή παντού...",
-	"wmwww_feed_caption_forest": "Φωτογραφία: Καμένο δάσος",
-	"wmwww_feed_caption_ice": "Φωτογραφία: Λιωμένος πάγος",
-	"wmwww_feed_caption_ocean": "Φωτογραφία: Πλαστικά στον ωκεανό",
-	"wmwww_feed_caption_city": "Φωτογραφία: Πλημμυρισμένη πόλη",
-	"wmwww_final_message": "Αυτό δεν είναι ένα βιντεοπαιχνίδι...\nΕίναι το μέλλον μας, αν δεν κάνουμε κάτι ουσιαστικό.",
+	"wmwww_final_message": "Αυτό δεν είναι ένα βιντεοπαιχνίδι...\nΕίναι το μέλλον μας, αν δεν κάνουμε κάτι ουσιαστικό.\n\nΚάθε δάσος που καίγεται, κάθε πάγος που λιώνει, κάθε θάλασσα που πνίγεται στο πλαστικό,\nείναι μια προειδοποίηση.\n\nΑν συνεχίσουμε να αδιαφορούμε, και απλά να ανεβάζουμε στα Social, το παιχνίδι τελειώνει για όλους μας.\nΗ αλλαγή ξεκινά από εμάς. Τώρα.",
 	// ---
 
-	// Act 1
-	"niceHat": "OOH NICE HAT",
-	"outtaHere": "yeah git on outta here",
-	"getARoom": "GROSS, GO GET A ROOM",
-	"notCoolAnymore": "nvm hats aren't cool anymore",
-	"tvOnTv": "A TV... ON TV!",
-	"cricky": "LIL' CRICKY <3",
-	"tooManyCrickets": "okay that's too many crickets",
-	"normalPeep": "just a normal peep",
-	"normalPeeps": "just some normal peeps",
-	"wowNothing": "WOWWEE, IT'S NOTHING",
-
-	// Act 2
-	"crazySquareAttacks": "CRAZED SQUARE ATTACKS",
-	"justMissed": "oooooh just missed it",
-	"somethingInteresting": "(ya gotta catch 'em doing *something* interesting...)",
-	"whoIsScreaming": "(ya gotta catch who's screaming at 'em)",
-	"circleFearsSquares": "CIRCLE FEARS SQUARES",
-	"whoScaresThem": "(ya gotta also catch *who* they're scared by)",
-	"areTheyScared": "(ya gotta catch 'em *being* scared by a square)", // not used
-	"squaresSnubCircles": "SQUARES SNUB CIRCLES",
-	"areTheySnubbed": "(ya gotta catch 'em *while* snubbing a circle)", // not used
-	"everyoneHates": "EVERYONE HATES EVERYONE!!1!",
-	"almostEveryoneHates": "ALMOST EVERYONE HATES EVERYONE...",
-	"squaresHateCircles": "SQUARES HATE CIRCLES",
-	"circlesHateSquares": "CIRCLES HATE SQUARES",
-	"areTheyYelling": "(ya gotta catch 'em *yelling* at others)", // not used
-	"nerdsNow": "what are these nerds doing now",
-	"schockedPeep": "why's this peep shocked?",
-	"whatever": "whatever",
-
-	// Act 3
-	"ellipsis": ". . .",
-	"coolNoMore": "hats ain't cool no more, haven't you heard?",
-	"beScared": "BE SCARED. BE ANGRY.",
-
-	// MANIFESTO
-	"manifesto": [
-		//"as if you viewers want GOOD news"       ,
-		"who tunes in to watch *people get along?*",
-		"peace is boring. violence goes viral.",
-		//"peace is boring. conflict gets clicks." ,
-		"and every story needs a conflict, so...",
-		//"...GIVE THE AUDIENCE WHAT THEY WANT."   ,
-		"GIVE THE AUDIENCE WHAT THEY WANT."
-	],
+	
 
 	// -- Strings currently in graphics resources --
 
-	// (bg_preload.png) Preload screen
-	"playingTime": "playing time: 5 minutes",
-	"warning": "warning: the following program\ncontains scenes of snobbery,\nrudeness & mass murder.\nviewer discretion is advised.",
+	
 
 	// (cam-instructions.png) Camera Instructions
 	"pointAndClick": "POINT & CLICK",
 
-	// (chyron3.png)
-	"chyronNothing": "WOWWEE, IT'S *NOTHING*",
+	
 
 	// (credits0001.png)
 	"createdBy": "created by",
-	"NickyCase": "Nicky Case",
+	"NickyCase": "Χρήστος Παπαδημητρίου",
 
 	// (credits0002.png)
-	"manyThanks": "many thanks to my playtesters:",
+	"onecredit": "Αυτό ήταν ένα webart, βασισμένο στο ανοιχτό λογισμικό του παιχνιδιού 'We Become What We Behold'",
 
 	// (credits000[3,4,5,6].png)
-	"patreonSupporters": "and to my patreon supporters:",
+	"twocredit": "του Nicky Case, αλλαγμένο από τον Χρήστο Παπαδημητρίου για το μάθημα της Τέχνης Διαδικτύου",
 
 	// (credits0007.png)
-	"lastButNotLeast": "and last but not least,",
+	"threecredit": "Background Music: Leaderbrain ( Night Life ) , Instrumental + Slowed",
 
 	// (credits0008.png)
-	"thankYouForPlaying": "thank YOU for playing!",
+	"thankYouForPlaying": "Σας ευχαριστώ!",
 
 	// (preload_play.png)
 	"playButton": "PLAY",
 
-	// (end_button.png) Post Credits
-	"otherWorkButton": "see my other work",
-	"buyCoffeeButton": "buy me a coffee",
-	"replayButton": "replay this mess",
+	
 
-	// (logo.png) Post Credits
-	"logoWBWWB": "SHARE THE PAIN:",
+	
 
-	// (end_prototype.png)
-	"endOfPrototype": "END OF PROTOTYPE",
-	"toBeContinued": "(to be continued!)",
+	
 
 	// (quote0002.png)
 	"WBWWB": "We destroy what we touch.",

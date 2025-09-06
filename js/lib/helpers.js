@@ -23,24 +23,13 @@ var MakeSprite = function(textureName){
 // MovieClips!
 var MakeMovieClip = function(resourceName){
 
-	// Make it!
+	// Use the image file directly
 	var resources = PIXI.loader.resources;
-	var resource = resources[resourceName];	
-	var numFrames = Object.keys(resource.data.frames).length;
-	var frames = [];
-	for(var i=0; i<numFrames; i++){
-		var str = "0000" + i; // FOUR leading zeroes
-		str = str.substr(str.length-4);
-		frames.push(PIXI.Texture.fromFrame(resourceName+str));
-	}
-	var mc = new PIXI.extras.MovieClip(frames);
+	var resource = resources[resourceName];
+	var sprite = new PIXI.Sprite(PIXI.Texture.fromImage(resource.url));
 
-	// Shtuff
-	mc.gotoAndStop(0);
-	mc.anchor.x = 0.5;
-	mc.anchor.y = 1.0;
-
-	// Return
-	return mc;
+	sprite.anchor.x = 0.5;
+	sprite.anchor.y = 1.0;
+	return sprite;
 
 };
